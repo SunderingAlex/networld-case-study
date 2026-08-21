@@ -19,7 +19,7 @@ The thesis follows four research questions:
 
 NetWorld builds each environment as a connected directed graph with 64 nodes. Four topology families provide distinct connectivity structures: Periodic Grid, Radial Ring, Small World, and Block Model. Edge length varies between network instances, lane count varies within each network, and both contribute to finite edge storage and per-tick admission capacity.
 
-Each run combines an immutable network with an immutable trip schedule. Every scheduled trip has a spawn tick, origin, destination, and router assignment. A separate run state tracks active agents, edge loads, movement decisions, and arrivals as the simulation advances through discrete ticks.
+Each run combines a fixed network with a fixed trip schedule. Every scheduled trip has a spawn tick, origin, and destination. Router assignments are applied per run from a stable agent ordering as the SIP proportion changes. A separate run state tracks active agents, edge loads, movement decisions, and arrivals as the simulation advances through discrete ticks.
 
 Each tick follows six ordered tasks:
 
@@ -34,7 +34,7 @@ Congestion develops through a spillback model. Agents reaching the end of an edg
 
 ## Routing and decision logic
 
-Both routers generate multi-step plans through modified A* search and use cached shortest-path distances as their heuristic. Their shared edge-cost model combines free-flow travel time, edge saturation, and predicted entry competition.
+Both routers generate multi-step plans through modified A* search and use cached shortest-path distances as their heuristic. Their shared edge-cost components are free-flow travel time and a congestion penalty. SIP also applies a competition penalty based on predicted SIP entry demand.
 
 LIP evaluates paths from the current traffic snapshot. SIP builds a time-indexed forecast from the locations and active plans of its cohort, discounts demand farther into the forecast horizon, and evaluates edges at the times agents expect to reach them. This forecast also supports planned waiting when a later movement offers a lower predicted cost.
 
