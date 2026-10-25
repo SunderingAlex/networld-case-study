@@ -59,7 +59,7 @@ Local `random.Random` instances use stable identifiers at the network, schedule,
 
 NetWorld records run completion, travel time, queue delay, detour, reroutes, crowding exposure, progress stalls, ETA error, and several related measures. The analysis summarizes completed trips for the full population and for each router cohort, then compares trajectories across composition, topology, and occupancy. Mean, median, and 90th-percentile delay provide complementary views of central behavior and higher-delay trips.
 
-## Selected findings
+## Some findings
 
 - Greater SIP assignment generally aligned with lower aggregate delay, with larger changes concentrated at higher assignment proportions.
 - Topology and occupancy shaped the size and trajectory of composition effects.
